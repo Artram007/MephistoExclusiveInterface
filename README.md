@@ -21,3 +21,5 @@ Only 14 pins are required to be able to light the LEDs and read out the reed swi
 
 * VCC is pin 1 and pin 2 (both 5V and 3.3V are working for me, ESP32 CANNOT BE DRIVEN WITH 5V!)
 * GND is pin 39 and pin 40
+
+See mephisto.h file to see which cable is connected to which GPIO pin of your microcontroller.
