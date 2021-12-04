@@ -1,9 +1,12 @@
 # MephistoExclusiveInterface
 
-The two mephisto.* files are needed to read out the reed switches and control the LEDs of a Mephisto Modular/Exclusive/München chessboard.
+The two mephisto.* files offer C-functions to read out the reed switches and control the LEDs of a Mephisto Modular/Exclusive/München chessboard.
 
 # Following hardware components are required:
-40-pin edge card connector
+40-pin edge card connector (e.g. https://de.aliexpress.com/item/33035971298.html?spm=a2g0s.9042311.0.0.4ec24c4dPRdAZB). 
+You need to ensure that the connector has a contact spacing of 1.27mm and has two rows with 20 contacts each. The ribbon cable need to have the same spacing!
+
+For a printed circuit board a right angle connector would be more suitable.
 
 I am using a connector with a ribbon cable, see image.
 
