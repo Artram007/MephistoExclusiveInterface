@@ -29,11 +29,6 @@ void Mephisto::initPorts()
   pinMode(LDC_EN, OUTPUT);
   pinMode(CB_EN, OUTPUT);
 
-  for (byte i = 0; i < 8; i++)
-  {
-    pinMode(bytePort[i], OUTPUT);
-  }
-
   digitalWrite(LDC_EN, LOW);
   digitalWrite(ROW_LE, LOW);
   digitalWrite(LDC_LE, LOW);
@@ -42,12 +37,12 @@ void Mephisto::initPorts()
 
 byte Mephisto::readRow(byte row)
 {
-
   byte rowResult;
 
   // select row to read:
   for (byte i = 0; i < 8; i++)
   {
+    pinMode(bytePort[i], OUTPUT);
     if (i == row)
     {
       digitalWrite(bytePort[i], LOW);
@@ -66,15 +61,10 @@ byte Mephisto::readRow(byte row)
   {
     digitalWrite(bytePort[i], LOW);
   }
+  
   digitalWrite(LDC_LE, HIGH);
   delayMicroseconds(LATCH_WAIT);
   digitalWrite(LDC_LE, LOW);
-
-  // change to input mode:
-  for (int i = 0; i < 8; i++)
-  {
-    pinMode(bytePort[i], INPUT);
-  }
 
   digitalWrite(LDC_EN, HIGH);
   delayMicroseconds(LATCH_WAIT); // fix for older Exclusive boards
@@ -86,14 +76,11 @@ byte Mephisto::readRow(byte row)
   rowResult = 0;
   for (byte i = 0; i < 8; i++)
   {
+    pinMode(bytePort[i], INPUT);
     rowResult += (digitalRead(bytePort[i])) << i;
   }
   digitalWrite(CB_EN, HIGH);
 
-  for (byte i = 0; i < 8; i++)
-  {
-    pinMode(bytePort[i], OUTPUT);
-  }
   return ~rowResult;
 }
 
@@ -105,6 +92,7 @@ void Mephisto::writeRow(byte row, byte value)
   // select row:
   for (byte i = 0; i < 8; i++)
   {
+    pinMode(bytePort[i], OUTPUT);
     if (i == row)
     {
       digitalWrite(bytePort[i], LOW);
