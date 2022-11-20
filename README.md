@@ -1,4 +1,4 @@
-# MephistoExclusiveInterface
+# ExclusiveInterface
 
 The two mephisto.* files offer C-functions to read out the reed switches and control the LEDs of a Mephisto Modular/Exclusive/München chessboard.
 
